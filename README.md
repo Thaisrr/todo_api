@@ -46,3 +46,16 @@ Les requêtes ne sont pas protégées.
     <li>PUT : <code>/todo/:id + body</code> :modifie un todo</li>
     <li>DELETE : <code>/todo/:id </code> :supprime un todo</li>
 </ul>
+
+<h3>Configurer une autre base de données : </h3>
+
+Pour configurer une base de données locale, allez dans le fichier config/config.json.
+Dans les configurations "development", ajouter les champs : 
+<ul>
+<li>"username" : votre identifiant sql</li>
+<li>"password" : votre mot de passe sql</li>
+<li>"dialect": modifiez sqlite pour le remplacer par le dialect que vous souhaitez
+utiliser : mysql ou mariadb</li>
+<li>installer le dialect avec npm : <code>npm i mariadb</code> ou <code>npm i mysql3</code> </li>
+<li>Créer la base de données : <code>npx sequelize db:create</code></li>
+</ul>

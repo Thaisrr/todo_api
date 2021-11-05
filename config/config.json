@@ -1,6 +1,8 @@
 {
   "development": {
     "database": "database_development",
+    "username": null,
+    "password": "",
     "host": "127.0.0.1",
     "dialect": "sqlite"
   },
