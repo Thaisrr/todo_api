@@ -14,22 +14,40 @@ Rendez vous ensuite dans le répertoire du projet, et ouvrez un terminal.
 <ul>
 <li>Installer les dépendances : <code>npm install</code></li>
 <li>Initialiser la base de données ( locale ) : <code>npx sequelize db:migrate</code></li>
-<li>Lancer le projet : <code>npm run start</code></li>
 </ul>
+La base de données est une base de données sqlite, il n'y a donc rien de plus à configurer.
+
+
+<h3>Lancer le projet</h3>
+
+Pour lancer le projet en mode "ouvert", sans authentification requise pour accéder aux Todos :
+ <code>npm run start</code>
+
+Pour lancer le projet en mode "protégé", nécéssitant un jwt pour accéder aux routes de Todo : 
+<code>npm run serve</code>
+
 
 Le projet devrait tourner sur le port 3000 : 
 <p>
 <a href='http://localhost:3000'>http://localhost:3000</a>
 </p>
 
-La base de données est une base de données sqlite, il n'y a donc rien à configurer.
 
 <h2>Utiliser l'API</h2>
+
+<h3>Les Users</h3>
+Les Users sont des objets ayant pour propriétés :
+<ul>
+    <li>id <code>: integer</code> <i>( lecture seule )</i></li>
+    <li>email <code>: string</code></li>
+    <li>password <code>: string</code></li>
+    <li>token <code>: string</code> <i>( lecture seule, renvoyé uniquement après authentification )</i></li>
+</ul>
 
 <h3>Les ToDos</h3>
 Les Todos sont des objets ayant pour propriétés : 
 <ul>
-    <li>id <code>: integer</code></li>
+    <li>id <code>: integer</code> <i>( lecture seule )</i></li>
     <li>name <code>: string</code></li>
     <li>description <code>: string</code></li>
     <li>table <code>: string</code></li>
@@ -39,6 +57,13 @@ Les Todos sont des objets ayant pour propriétés :
 L'API accepte et renvoie les données en JSON. 
 Les requêtes ne sont pas protégées.
 
+<h4>Users</h4>
+<ul>
+    <li>POST : <code>/register + body</code> :créé un nouveau todo</li>
+    <li>POST : <code>/login + body</code> : authentifie un user, et renvoie son id, son email, et un jwt valable 24h</li>
+</ul>
+
+<h4>Todos :</h4>
 <ul>
     <li>GET : <code>/todo</code> : récupère une liste de tous les todos</li>
     <li>GET : <code>/todo/:id</code> :récupère un todo par son ID</li>
