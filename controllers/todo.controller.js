@@ -8,10 +8,12 @@ class TodoController {
             const data = await Todo.findAll();
             res.json(data);
         }catch (e) {
-            res.status(404).send({ message: 'Aucune tâche trouvée'})
+            console.log(e)
+            res.status(404).send({ message: e.message})
         }
 
     }
+
 
     getOne = async (req, res) => {
         try {
@@ -81,7 +83,15 @@ class TodoController {
         } catch (e) {
             res.status(400).send({ message: 'Impossible de supprimer la tâche, il se peut qu\'elle n\'existe déjà plus'})
         }
+    }
 
+    count = async (req, res) => {
+        try {
+            const c = await Todo.count({where: true});
+            res.json(c)
+        } catch (e) {
+            res.status(400).send('Oups, something went wrong ?')
+        }
     }
 
 }

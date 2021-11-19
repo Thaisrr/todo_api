@@ -7,6 +7,7 @@
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.14",
     "sequelize": "^6.9.0",
     "sequelize-cli": "^6.3.0",
@@ -14,8 +15,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "serve": "AUTH=true nodemon index.js",
-    "start": "AUTH=false nodemon index.js"
+    "serve": "AUTH=true node index.js",
+    "start": "AUTH=false node index.js"
   },
   "author": "",
   "license": "ISC"
