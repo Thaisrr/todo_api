@@ -15,8 +15,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "serve": "AUTH=true node index.js",
-    "start": "AUTH=false node index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC"

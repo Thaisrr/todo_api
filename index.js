@@ -1,10 +1,9 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port =  3000;
 const TodoController = require('./controllers/todo.controller')
 const UserController = require('./controllers/user.controller')
 const auth = require('./middleware/isAuthenticate')
-const bcrypt = require('bcrypt');
 
 app.use(express.json());
 
@@ -23,9 +22,8 @@ app.get('/', (req, res) => {
 app.post('/register', UserController.register);
 app.post('/login', UserController.login);
 
-if(process.env.AUTH && process.env.AUTH === 'true') {
-    app.use(auth);
-}
+//    app.use(auth);
+
 
 // Todo Routes
 app.get('/todo/count', TodoController.count);
@@ -37,6 +35,5 @@ app.delete('/todo/:id', TodoController.delete);
 
 
 app.listen(port,  () => {
-    console.log('Authentication required : ', process.env.AUTH);
     console.log('Server is running on port ', port);
 })
