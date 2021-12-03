@@ -67,6 +67,7 @@ Les requêtes ne sont pas protégées.
 <ul>
     <li>GET : <code>/todo</code> : récupère une liste de tous les todos</li>
     <li>GET : <code>/todo/:id</code> :récupère un todo par son ID</li>
+    <li>GET : <code>/todo/by + query params "table" ( ?table= )</code> :récupère les todos en fonction du paramétre table</li>
     <li>POST : <code>/todo + body</code> :créé un nouveau todo</li>
     <li>PUT : <code>/todo/:id + body</code> :modifie un todo</li>
     <li>DELETE : <code>/todo/:id </code> :supprime un todo</li>
