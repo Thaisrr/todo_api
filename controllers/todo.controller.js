@@ -26,11 +26,21 @@ class TodoController {
             res.status(404).send({ message: 'Aucune tâche trouvée avec cet ID'})
         }
 
-    }
+    };
+    getByTable = async (req, res) => {
+        try {
+            const table = req.query.table;
+            const data = await Todo.findAll({where: {table}});
+            res.json(data)
+        } catch (e) {
+            res.status(404).send({message: 'Aucune tâche trouvée dans ce tableau'})
+        }
+    };
 
     create = async (req, res) => {
         try {
             console.log(req.body);
+            console.log("-----------Create ");
             const new_todo = {
                 name: req.body.name,
                 description: req.body.description,
