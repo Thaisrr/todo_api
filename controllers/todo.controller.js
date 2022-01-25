@@ -11,7 +11,6 @@ class TodoController {
             console.log(e)
             res.status(404).send({ message: e.message})
         }
-
     }
 
 
@@ -39,8 +38,6 @@ class TodoController {
 
     create = async (req, res) => {
         try {
-            console.log(req.body);
-            console.log("-----------Create ");
             const new_todo = {
                 name: req.body.name,
                 description: req.body.description,
@@ -49,7 +46,6 @@ class TodoController {
             let data = await Todo.create(new_todo);
             res.json(data);
         } catch (e) {
-            console.log(e)
             res.status(400).send({ message: 'Impossible de créer le Todo, verifiez vos paramètres'})
 
         }
@@ -58,7 +54,9 @@ class TodoController {
 
     update = async (req, res) => {
         try {
-
+            console.info('updating')
+            console.log(req.body);
+            console.log('id : ', req.params.id);
             const id = req.params.id;
             let td = await Todo.findByPk(id, {
                 where: {id: id}
@@ -67,7 +65,7 @@ class TodoController {
                 res.status(404).send('Pas de tâche trouvée avec cet ID')
             } else {
                 const updated_todo = {
-                    name: req.body.text || td.name,
+                    name: req.body.name || td.name,
                     description: req.body.description || td.description,
                     table: req.body.table || td.table
                 }
