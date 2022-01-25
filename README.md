@@ -14,17 +14,17 @@ Rendez vous ensuite dans le répertoire du projet, et ouvrez un terminal.
 <ul>
 <li>Installer les dépendances : <code>npm install</code></li>
 <li>Initialiser la base de données ( locale ) : <code>npx sequelize db:migrate</code></li>
+<li>Récupérer des données de test : <code>npx sequelize db:seed:all</code></li>
 </ul>
 La base de données est une base de données sqlite, il n'y a donc rien de plus à configurer.
-
+Attention, comme il s'agit de sqlite, la base de données se supprime lorsque vous eteignez le serveur,
+il sera donc peut-être nécéssaire de refaire la dernière commande ( seed ) lorsque vous la relancerez.
 
 <h3>Lancer le projet</h3>
 
 Pour lancer le projet en mode "ouvert", sans authentification requise pour accéder aux Todos :
  <code>npm run start</code>
 
-Pour lancer le projet en mode "protégé", nécéssitant un jwt pour accéder aux routes de Todo : 
-<code>npm run serve</code>
 
 
 Le projet devrait tourner sur le port 3000 : 
@@ -67,6 +67,7 @@ Les requêtes ne sont pas protégées.
 <ul>
     <li>GET : <code>/todo</code> : récupère une liste de tous les todos</li>
     <li>GET : <code>/todo/:id</code> :récupère un todo par son ID</li>
+    <li>GET : <code>/todo/by + query params "table" ( ?table= )</code> :récupère les todos en fonction du paramétre table</li>
     <li>POST : <code>/todo + body</code> :créé un nouveau todo</li>
     <li>PUT : <code>/todo/:id + body</code> :modifie un todo</li>
     <li>DELETE : <code>/todo/:id </code> :supprime un todo</li>
@@ -83,4 +84,5 @@ Dans les configurations "development", ajouter les champs :
 utiliser : mysql ou mariadb</li>
 <li>installer le dialect avec npm : <code>npm i mariadb</code> ou <code>npm i mysql3</code> </li>
 <li>Créer la base de données : <code>npx sequelize db:create</code></li>
+<li>Effectuez les migrations : <code>npx sequelize db:migrate</code></li>
 </ul>
