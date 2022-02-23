@@ -4,19 +4,19 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Todo.hasMany(models.User, {
+        foreignKey: 'table_id',
+        sourceKey: 'table_id'
+      });
+      Todo.hasMany(models.label);
+      Todo.belongsTo(models.table);
     }
   };
   Todo.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    table: DataTypes.STRING
+    table_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Todo',

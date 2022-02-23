@@ -28,8 +28,8 @@ class TodoController {
     };
     getByTable = async (req, res) => {
         try {
-            const table = req.query.table;
-            const data = await Todo.findAll({where: {table}});
+            const table_id = req.query.table_id;
+            const data = await Todo.findAll({where: {table_id}});
             res.json(data)
         } catch (e) {
             res.status(404).send({message: 'Aucune tâche trouvée dans ce tableau'})
@@ -47,7 +47,6 @@ class TodoController {
             res.json(data);
         } catch (e) {
             res.status(400).send({ message: 'Impossible de créer le Todo, verifiez vos paramètres'})
-
         }
 
     }

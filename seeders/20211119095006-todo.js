@@ -6,21 +6,21 @@ module.exports = {
         {
          name: 'Boire du café',
          description: `Le café, c'est la vie`,
-            table: 'TODO',
+         table_id: 1,
             createdAt:  new Date(),
             updatedAt:  new Date()
        },
       {
         name: 'Profiter du week end',
         description: `Netflix and chill !`,
-        table: 'TODO',
+        table_id: 1,
           createdAt: new Date(),
           updatedAt:  new Date()
       },
       {
           name: 'Manipuler une API',
           description: '...',
-          table: 'DONE',
+          table_id: 2,
           createdAt:  new Date(),
           updatedAt:  new Date()
       }

@@ -10,11 +10,10 @@ class UserController {
             const email = req.body.email;
             let user = await User.findOne({where: {email}});
             if(user) {
-                res.status(400).send('User déjà existant')
+                res.status(400).send('Un compte existe déjà avec cet email')
             } else {
                 const password = await bcrypt.hash(req.body.password, 10);
                 user = {email, password};
-                // = user { email : email, password : password }
                 const data  = await User.create(user)
                 res.json({email: data.email, createdAt: data.createdAt});
             }
@@ -25,6 +24,7 @@ class UserController {
     }
 
     login = async (req, res) => {
+        console.log('-- login')
         let email, password;
         try {
             email = req.body.email;
@@ -36,6 +36,7 @@ class UserController {
         const user = await User.findOne({where: {email}});
         if(!user) {
             res.status(401).send(`Erreur d'authentification`);
+            //res.status(401).send(`Erreur d'authentification`);
         } else {
             const isValid = await bcrypt.compare(password, user.password);
             if(!isValid) {
